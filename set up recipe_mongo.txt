@@ -1,0 +1,28 @@
+cd /mnt/c/Users/AJ_Bo/Downloads/cs_469_recipe_website/
+
+1.To set up recipe_mongo: docker container run -d --name recipe_mongo -p "27017:27017" -e "MONGO_INITDB_ROOT_USERNAME=root" -e "MONGO_INITDB_ROOT_PASSWORD=delicious1" mongo:latest
+
+
+2. In Docker Desktop: mongosh --username root --password delicious1 --authenticationDatabase admin
+
+or mongosh -u root -p
+and type in password
+
+To set up recipes DB: use recipes;
+
+To create user for recipes:
+db.createUser({
+	user: "recipes",
+	pwd: "delicious1",
+	roles: [{ role: "readWrite", db: "recipes"}]
+	});
+
+or
+db.createUser({ user: "recipes", pwd: "delicious1", roles: [{ role: "readWrite", db: "recipes" }] });
+
+
+create 1 recipe:
+db.recipes.insertOne({ name: "Orange Chicken", ingredients: "-Chicken: 3 chicken breasts, 1 egg - whisked, 1/2 cup Corstarch, 1/2 cup Flour, Salt. -Orange Chicken Sauce: 1 cup Orange Juice, 2 Tablespoons Soy Sauce", steps: "Preperation: Make orange sauce, Make chicken. Cooking: Preheat oven to 400 degrees Fahrenheit, Leave chicken in oven for 10 minutes, Take chicken out and enjoy with orange sauce, Preheat oven to 500 degrees Fahrenheit", category: "Poultry", total_time: "1 hr 20 mins", comments: "NotCopyrightedCookingGame: I loved this recipe!"})
+
+
+export MONGO_USER=recipes MONGO_PASSWORD=delicious1 MONGO_DB_NAME=recipes

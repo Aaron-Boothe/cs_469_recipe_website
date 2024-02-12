@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recipe Website</title>
+
+    <!--
+      For "Roboto" and "Roboto Slab"
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/recipe_browser.js" charset="utf-8" defer></script>
+  
+  </head>
+  <body>
+
+    <header>
+
+      <h1 class="search-recipes"></a>
+        <input type="text" name="filter-text" id="search-recipes" class="filter-input" placeholder="Search">
+      </h1>
+
+      <h1 class="site-title">Browse Recipes</h1>
+
+      <h1 class="add-recipe action-button">+</h1>
+
+    </header>
+
+    <main class="content">
+    
+      <section id="recipes">
+
+        <!-- <a href='#ObjectId("65bf3220a2dd1dd59881af32")'> -->
+        <!-- <a href='www.google.com'> -->
+          <div class="recipe" data-category="Poultry">
+            <div class="recipe-contents">
+              <div class="recipe-info-container">
+                <a class="recipe-title" href='recipe/ObjectId("65bf3220a2dd1dd59881af32")'>Orange Chicken</a>
+              </div>
+              <div class="recipe-info-container">
+                <span class="recipe-time">Total Time: 1 hr 20 mins</span>
+              </div>
+            </div>
+          </div>
+        <!-- </a> -->
+
+        <div class="recipe" data-category="Poultry">
+          <div class="recipe-contents">
+            <div class="recipe-info-container">
+              <a class="recipe-title">Garlic Chicken</a>
+            </div>
+            <div class="recipe-info-container">
+              <span class="recipe-time">Total Time: 1 hour</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      
+    </main>
+
+  </body>
+</html>

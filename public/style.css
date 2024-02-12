@@ -1,0 +1,116 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #e06500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background-color: #ffd8ab;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  justify-content: space-between;
+}
+
+header a {
+  color: black;
+}
+
+header h1 {
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto 
+}
+
+/* Recipe Browsing Page */
+
+.search-recipes {
+  padding-left: 15px;
+}
+
+.add-recipe {
+  padding-right: 15px;
+}
+
+.site-title a:hover {
+  text-decoration: none;
+}
+
+.content {
+  display: flex;
+}
+
+.filter-input {
+  font-size: 14px;
+  width: 100%;
+  margin-left: 10px;
+  padding: 3px;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.action-button {
+  padding: 5px;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #f9d2b2;
+  border-color: #333;
+  color: #333;
+  font-weight: bolder;
+}
+
+.recipe {
+  display: inline-block;
+  vertical-align: top;
+  height: 300px;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+}
+
+.recipe-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.recipe-info-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* 404 Page */
+
+.page-404-content {
+  align-items: center;
+  text-align: center;
+}
+
+/* Recipe Page */
+
+.recipe-section-container {
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto 
+}
