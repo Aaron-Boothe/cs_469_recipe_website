@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recipe Website</title>
+
+    <!--
+      For "Roboto" and "Roboto Slab"
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/recipe_browser.js" charset="utf-8" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script src="/recipe_contents_template.js" charset="utf-8" defer></script>
+  
+  </head>
+  <body>
+
+    <header>
+
+      <h1 class="search-recipes"></a>
+        <input type="text" name="filter-text" id="search-recipes" class="filter-input" placeholder="Search">
+      </h1>
+
+      <h1 class="site-title">Browse Recipes</h1>
+
+      <h1 type="button" id="sort-by-rating" class="action-button">&#127775;</button>
+
+      <h1 id='add-recipe' class="add-recipe action-button">+</h1>
+
+    </header>
+
+    <main class="content">
+    
+      <section id="recipes">
+
+        {{#each recipes}}
+          {{> recipe_contents}}
+        {{/each}}
+
+      </section>
+      
+    </main>
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="add-recipe-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Create Recipe</h3>
+          <!-- &times; X symbol -->
+          <!-- https://www.w3schools.com/charsets/ref_html_entities_4.asp -->
+          <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="recipe-input-element">
+            <label for="recipe-name-input">Name</label>
+            <input type="text" id="recipe-name-input">
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-category-input">Category</label>
+            <input type="text" id="recipe-category-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-ingredients-input">Ingredients</label>
+            <input type="text" id="recipe-ingredients-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-steps-input">Steps</label>
+            <input type="text" id="recipe-steps-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-total-time-input">Total Time</label>
+            <input type="text" id="recipe-total-time-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-notes-input">Notes (optional)</label>
+            <input type="text" id="recipe-notes-input"></input>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
+          <button type="button" id="modal-accept" class="action-button">Create Recipe</button>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recipe Website - {{name}}</title>
+
+    <!--
+      For "Roboto" and "Roboto Slab"
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+
+    <script src="/recipe_page.js" charset="utf-8" defer></script>
+  
+  </head>
+  <body>
+
+    <header>
+
+      <h1 class="site-title"><a href="/">Back to Browse Recipes</a></h1>
+
+    </header>
+
+    <main class="content">
+    
+      <section id="recipes">
+
+        <div class="recipe-section-container">
+          <div class="recipe-section-overview">
+            <h2>Overview</h2>
+            <div class="recipe-info-container">
+              <a class="recipe-title">{{name}}  <button type="button" id="edit-recipe-button">&#128393;</button>  </a>
+            </div>
+            <button id='measurement_button' type="button">Measurement Toggle</button>
+            <button id='temperature_button' type="button">Temperature Toggle</button>
+            {{#if rating}}
+              <div class="recipe-info-container">
+                <span class="recipe-rating">Rating:  <input id="input_recipe_rating" type="number" min=0 max=10 placeholder={{rating}}></span>
+              </div>
+            {{else}}
+              <div class="recipe-info-container">
+                <span class="recipe-rating">Rating:  <input id="input_recipe_rating" type="number" min=0 max=10 placeholder=0></span>
+              </div>
+            {{/if}}
+            <div class="recipe-info-container">
+              <span class="recipe-time">Total Time: {{total_time}} </span>
+            </div>
+            <div class="recipe-info-container">
+              <span class="recipe-categories">{{category}} </span>
+            </div>
+            <div class="recipe-info-container">
+              <span id="recipe-info-ingredients" class="recipe-ingredients">
+                Ingredients:
+                
+                {{ingredients}}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-section-container">
+          <div class="recipe-section-preperation">
+            <div class="recipe-info-container">
+              {{steps_preperation}}
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-section-container">
+          <div id='recipe-section-cooking' class="recipe-section-cooking">
+            <div class="recipe-info-container">
+              {{steps}}
+            </div>
+          </div>
+        </div>
+
+        {{#if notes}}
+          <div class="recipe-section-container">
+            <div class="recipe-section-notes">
+              <div class="recipe-info-container">
+                <h2>Notes</h2>
+                {{#each notes}}
+                  <!-- <ul> --> 
+                    <li> {{this}}  </li>
+                  <!-- </ul> -->
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+
+        {{#if comments}}
+          <div class="recipe-section-container">
+            <div class="recipe-section-comments">
+              <div class="recipe-info-container">
+                <h2>Comments</h2>
+                {{#each comments}}
+                  <li> {{this}} </li>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+
+        <div class="recipe-comments-container">
+          <h1 class="recipe_comments"></a>
+            <input type="text" id="insert_recipe_comments" placeholder="Type comment here">
+          </h1>
+        </div>
+
+      </section>
+      
+    </main>
+
+    <h1 type="button" id="openai-open">&#129302;</h1>
+
+    <h1 type="button" id="wakelock-enable">&#128274;</h1>
+
+  </body>
+
+
+  <div id="openai-modal-backdrop" class="hidden"></div>
+    <div id="openai-modal" class="hidden">
+      <div id="modal-dialog-box" class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>OpenAI Chat - Chef</h3>
+          <!-- &times; X symbol -->
+          <!-- https://www.w3schools.com/charsets/ref_html_entities_4.asp -->
+          <button type="button" id="openai-modal-close" class="modal-hide-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+          <div id="ai-prompt" class="ai-input-container">
+            <p>Enter your recipe-related questions below!</p>
+          </div>
+
+          <div class="ai-input-container">
+            <input type="text" id="openai-input"></input>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  <div id="modal-backdrop" class="hidden"></div>
+    <div id="add-recipe-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Edit Recipe</h3>
+          <!-- &times; X symbol -->
+          <!-- https://www.w3schools.com/charsets/ref_html_entities_4.asp -->
+          <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="recipe-input-element">
+            <label for="recipe-name-input">Name</label>
+            <input type="text" id="recipe-name-input">
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-category-input">Category</label>
+            <input type="text" id="recipe-category-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-ingredients-input">Ingredients</label>
+            <input type="text" id="recipe-ingredients-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-steps-input">Steps</label>
+            <input type="text" id="recipe-steps-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-total-time-input">Total Time</label>
+            <input type="text" id="recipe-total-time-input"></input>
+          </div>
+
+          <div class="recipe-input-element">
+            <label for="recipe-notes-input">Notes (optional)</label>
+            <input type="text" id="recipe-notes-input"></input>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
+          <button type="button" id="modal-accept" class="action-button">Edit Recipe</button>
+        </div>
+
+      </div>
+    </div>
+
+</html>
