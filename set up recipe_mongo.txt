@@ -1,5 +1,3 @@
-cd /mnt/c/Users/AJ_Bo/Downloads/cs_469_recipe_website/
-
 1.To set up recipe_mongo: docker container run -d --name recipe_mongo -p "27017:27017" -e "MONGO_INITDB_ROOT_USERNAME=root" -e "MONGO_INITDB_ROOT_PASSWORD=delicious1" mongo:latest
 
 
